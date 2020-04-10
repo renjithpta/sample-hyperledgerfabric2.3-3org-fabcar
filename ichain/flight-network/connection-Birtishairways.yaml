@@ -1,0 +1,91 @@
+---
+name: flight-network-org1
+version: 1.0.0
+client:
+  organization: Org1
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  Org1:
+    mspid: Org1MSP
+    peers:
+    - peer0.org1.ibs.aero
+    - peer1.org1.ibs.aero
+    certificateAuthorities:
+    - ca.org1.ibs.aero
+peers:
+  peer0.org1.ibs.aero:
+    url: grpcs://localhost:7051
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICdTCCAhygAwIBAgIRAKudXXgvasT7XcVOXAYD3K4wCgYIKoZIzj0EAwIwgYQx
+        CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+        RnJhbmNpc2NvMSAwHgYDVQQKExdiaXJ0aXNoYWlyd2F5cy5pYnMuYWVybzEmMCQG
+        A1UEAxMddGxzY2EuYmlydGlzaGFpcndheXMuaWJzLmFlcm8wHhcNMjAwNDA2MDMz
+        NTAwWhcNMzAwNDA0MDMzNTAwWjCBhDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNh
+        bGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF2JpcnRp
+        c2hhaXJ3YXlzLmlicy5hZXJvMSYwJAYDVQQDEx10bHNjYS5iaXJ0aXNoYWlyd2F5
+        cy5pYnMuYWVybzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLlr9PSZq7Q9cUc5
+        fQkm91k/xddmuw4vqdg01DwM0239SeQ2kODQje+EO3YaOVzTc7Pg5U/agGRld5zp
+        BpNg3++jbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYI
+        KwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgxSkCbTshIWFzyfAB
+        emn85PFr1k85vlCXWcOFuB5sT28wCgYIKoZIzj0EAwIDRwAwRAIgCBOvew9BBRiD
+        f8iXy5ei+t6umeKa0vXCt8uQkDl0VgYCIBzBbvPLPYngTtQoz5Crf/tHLzyGpg/M
+        tm0Q8Es2L1yG
+        -----END CERTIFICATE-----
+        
+    grpcOptions:
+      ssl-target-name-override: peer0.org1.ibs.aero
+      hostnameOverride: peer0.org1.ibs.aero
+  peer1.org1.ibs.aero:
+    url: grpcs://localhost:8051
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICdTCCAhygAwIBAgIRAKudXXgvasT7XcVOXAYD3K4wCgYIKoZIzj0EAwIwgYQx
+        CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+        RnJhbmNpc2NvMSAwHgYDVQQKExdiaXJ0aXNoYWlyd2F5cy5pYnMuYWVybzEmMCQG
+        A1UEAxMddGxzY2EuYmlydGlzaGFpcndheXMuaWJzLmFlcm8wHhcNMjAwNDA2MDMz
+        NTAwWhcNMzAwNDA0MDMzNTAwWjCBhDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNh
+        bGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF2JpcnRp
+        c2hhaXJ3YXlzLmlicy5hZXJvMSYwJAYDVQQDEx10bHNjYS5iaXJ0aXNoYWlyd2F5
+        cy5pYnMuYWVybzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABLlr9PSZq7Q9cUc5
+        fQkm91k/xddmuw4vqdg01DwM0239SeQ2kODQje+EO3YaOVzTc7Pg5U/agGRld5zp
+        BpNg3++jbTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYI
+        KwYBBQUHAwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgxSkCbTshIWFzyfAB
+        emn85PFr1k85vlCXWcOFuB5sT28wCgYIKoZIzj0EAwIDRwAwRAIgCBOvew9BBRiD
+        f8iXy5ei+t6umeKa0vXCt8uQkDl0VgYCIBzBbvPLPYngTtQoz5Crf/tHLzyGpg/M
+        tm0Q8Es2L1yG
+        -----END CERTIFICATE-----
+        
+    grpcOptions:
+      ssl-target-name-override: peer1.org1.ibs.aero
+      hostnameOverride: peer1.org1.ibs.aero
+certificateAuthorities:
+  ca.org1.ibs.aero:
+    url: https://localhost:7054
+    caName: ca-org1
+    tlsCACerts:
+      pem: |
+        -----BEGIN CERTIFICATE-----
+        MIICcDCCAhagAwIBAgIRAOMwNoYUdyEAgyb3aXZg1GIwCgYIKoZIzj0EAwIwgYEx
+        CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4g
+        RnJhbmNpc2NvMSAwHgYDVQQKExdiaXJ0aXNoYWlyd2F5cy5pYnMuYWVybzEjMCEG
+        A1UEAxMaY2EuYmlydGlzaGFpcndheXMuaWJzLmFlcm8wHhcNMjAwNDA2MDMzNTAw
+        WhcNMzAwNDA0MDMzNTAwWjCBgTELMAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlm
+        b3JuaWExFjAUBgNVBAcTDVNhbiBGcmFuY2lzY28xIDAeBgNVBAoTF2JpcnRpc2hh
+        aXJ3YXlzLmlicy5hZXJvMSMwIQYDVQQDExpjYS5iaXJ0aXNoYWlyd2F5cy5pYnMu
+        YWVybzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABBTxslYmEWAQbH9+b2xuP8z5
+        v5ZIJ9rjtyNCAek1LWsGjKRaJr8MKikehDAPAbY0x6OXUNXoSla5e6Y6kIsvFh6j
+        bTBrMA4GA1UdDwEB/wQEAwIBpjAdBgNVHSUEFjAUBggrBgEFBQcDAgYIKwYBBQUH
+        AwEwDwYDVR0TAQH/BAUwAwEB/zApBgNVHQ4EIgQgd3KwJn9/ruiR5pIeUZ4h2aZ/
+        RQ1R7qX/jzObvHlbF2QwCgYIKoZIzj0EAwIDSAAwRQIhAIyrooFXz8OR9JGzLKUd
+        QqdNySy9My1yHw+p8MrUIQ/LAiBhgVUq+I5w1u6mlJuvvaacdQoQaotJdQ+fMDZO
+        TMTqpA==
+        -----END CERTIFICATE-----
+        
+    httpOptions:
+      verify: false

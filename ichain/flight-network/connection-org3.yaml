@@ -1,0 +1,28 @@
+---
+name: flight-network-heathrowairport
+version: 1.0.0
+client:
+  organization: Heathrowairport
+  connection:
+    timeout:
+      peer:
+        endorser: '300'
+organizations:
+  Heathrowairport:
+    mspid: HeathrowairportMSP
+    peers:
+    - peer0.heathrowairport.ibs.aero
+    - peer1.heathrowairport.ibs.aero
+peers:
+  peer0.heathrowairport.ibs.aero:
+    url: grpcs://localhost:11051
+    tlsCACerts:
+      path: heathrowairport-artifacts/crypto-config/peerOrganizations/heathrowairport.ibs.aero/tlsca/tlsca.heathrowairport.ibs.aero-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer0.heathrowairport.ibs.aero
+  peer1.heathrowairport.ibs.aero:
+    url: grpcs://localhost:12051
+    tlsCACerts:
+      path: heathrowairport-artifacts/crypto-config/peerOrganizations/heathrowairport.ibs.aero/tlsca/tlsca.heathrowairport.ibs.aero-cert.pem
+    grpcOptions:
+      ssl-target-name-override: peer1.heathrowairport.ibs.aero
