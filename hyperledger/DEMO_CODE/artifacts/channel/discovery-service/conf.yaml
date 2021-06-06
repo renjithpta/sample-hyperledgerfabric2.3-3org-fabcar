@@ -1,0 +1,10 @@
+version: 0
+tlsconfig:
+  certpath: ""
+  keypath: ""
+  peercacertpath: ../crypto-config/peerOrganizations/bank.example.com/peers/peer0.bank.example.com/msp/tlscacerts/tlsca.bank.example.com-cert.pem
+  timeout: 0s
+signerconfig:
+  mspid: BankMSP
+  identitypath: ../crypto-config/peerOrganizations/bank.example.com/users/User1@bank.example.com/msp/signcerts/User1@bank.example.com-cert.pem
+  keypath: ../crypto-config/peerOrganizations/bank.example.com/users/User1@bank.example.com/msp/keystore/priv_sk
