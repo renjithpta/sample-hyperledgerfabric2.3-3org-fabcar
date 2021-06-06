@@ -1,7 +1,4 @@
-# FabricNetwork-2.x
-
-Youtube Channel: https://www.youtube.com/watch?v=SJTdJt6N6Ow&list=PLSBNVhWU6KjW4qo1RlmR7cvvV8XIILub6
-
+#DEMO
 
 Network Topology
 
@@ -16,6 +13,13 @@ One Orderer Org
 
     - Three Orderers
     - One Certificate Authority
+
+Prerequiste
+
+Hyperledger Fabric 2.3
+Go 1.15
+Node 1.10.x or later
+Curl
 
 
 
