@@ -2,12 +2,14 @@ package com.ibs.fly2plan.controller;
 
 
 
+import com.ibs.fly2plan.models.AirportAcris;
 import com.ibs.fly2plan.producer.KafkaMessageProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -15,23 +17,24 @@ import java.util.UUID;
 @RequestMapping("/api/aodbapp")
 public class Fly2PlanReceiverController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Fly2PlanReceiverController.class);
+    private final Logger LOG = LoggerFactory.getLogger(getClass());
 
+    @Autowired
     private KafkaMessageProducer kafkaMessageProducer ;
+
+    @Value("${fly2plan.kafka_topic.apllication}")
+    private String aodbtopic;
 
     public Fly2PlanReceiverController() {
 
     }
 
     @RequestMapping(value = "/publish", method =  { RequestMethod.POST, RequestMethod.GET})
-    public void publishMessagesOnKafka() {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void publishMessagesOnKafka(@RequestBody AirportAcris airportAcris) {
         UUID key = UUID.randomUUID();
-        LOGGER.info("sending messages to topic: {} with the key: {}", key);
-        this.kafkaMessageProducer.getBankDetailsReactive()
-                .doOnNext((bankDetail) -> bankDetailKafkaTemplate.send(TOPIC_NAME,key.toString(), bankDetail) )
-                .doOnComplete(() ->   completionSignalKafkaTemplate.send(TOPIC_NAME, key.toString(),
-                        new CompletionSignal(BankDetail.class, key.toString())))
-                .subscribe();
+        LOG.info("sending messages to topic: {} with the key: {}", airportAcris);
+        this.kafkaMessageProducer.sendMessage(airportAcris, key.toString(), aodbtopic);
     }
 
 

@@ -5,7 +5,7 @@ package com.ibs.fly2plan.models;
 public enum MessageType {
 
     STRING(String.class),
-    ACRISAIRPORT(AirportAcris.class);
+    AIRPORTACRIS(AirportAcris.class);
 
     private final Class value;
 

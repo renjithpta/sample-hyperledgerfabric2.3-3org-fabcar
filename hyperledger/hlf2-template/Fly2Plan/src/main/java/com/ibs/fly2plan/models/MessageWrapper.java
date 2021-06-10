@@ -1,5 +1,6 @@
 package com.ibs.fly2plan.models;
 import java.io.Serializable;
+import java.util.UUID;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,9 +25,9 @@ import lombok.ToString;
 public class MessageWrapper implements Serializable{
 
     private static final long serialVersionUID = 2121211L;
-
     private long timestamp;
     private String callerModule;
     private MessageType messageType;
     private String payload;
+
 }
